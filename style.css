@@ -1,0 +1,64 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Comic Sans MS', 'Arial', sans-serif; /* 可愛字體 */
+  overflow: hidden; /* 防止畫布滾動 */
+}
+
+canvas {
+  display: block;
+}
+
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 15px;
+}
+
+.menu li {
+  position: relative;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #5c677d; /* 黑色字體 */
+  background-color: #adb5bd; /* 粉紅背景 */
+  padding: 10px 15px;
+  border-radius: 15px; /* 圓角 */
+  font-size: 16px;
+  font-weight: 900; /* 更粗的字體 */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* 可愛陰影 */
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.menu a:hover {
+  background-color: #ff9999; /* 懸停時更深的粉紅色 */
+  transform: scale(1.1); /* 懸停時放大 */
+}
+
+.submenu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  background-color: #ffcccb;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* 可愛陰影 */
+}
+
+.dropdown:hover .submenu {
+  display: block;
+}
