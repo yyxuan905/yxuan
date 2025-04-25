@@ -1,28 +1,34 @@
+/* 全局樣式 */
 html, body {
   margin: 0;
   padding: 0;
+  font-family: Arial, sans-serif;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Comic Sans MS', 'Arial', sans-serif; /* 可愛字體 */
   overflow: hidden; /* 防止畫布滾動 */
 }
 
+/* 確保 canvas 覆蓋整個畫布 */
 canvas {
   display: block;
 }
 
+/* 選單樣式 */
 .menu {
   list-style: none;
   margin: 0;
   padding: 0;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  display: flex;
-  gap: 15px;
+  position: fixed; /* 固定選單位置 */
+  top: 10px; /* 距離視窗頂部 10px */
+  right: 10px; /* 距離視窗右側 10px */
+  z-index: 10; /* 確保選單位於畫布之上 */
+  background: rgba(0, 0, 0, 0.5); /* 半透明背景 */
+  padding: 10px 20px;
+  border-radius: 10px;
+  display: flex; /* 使用 flex 排列主選單 */
+  flex-direction: row; /* 主選單橫向排列 */
+  gap: 15px; /* 主選單項目之間的間距 */
 }
 
 .menu li {
@@ -31,34 +37,106 @@ canvas {
 
 .menu a {
   text-decoration: none;
-  color: #5c677d; /* 黑色字體 */
-  background-color: #adb5bd; /* 粉紅背景 */
+  color: white;
   padding: 10px 15px;
-  border-radius: 15px; /* 圓角 */
-  font-size: 16px;
-  font-weight: 900; /* 更粗的字體 */
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* 可愛陰影 */
-  transition: transform 0.2s ease, background-color 0.3s ease;
-}
-
-.menu a:hover {
-  background-color: #ff9999; /* 懸停時更深的粉紅色 */
-  transform: scale(1.1); /* 懸停時放大 */
-}
-
-.submenu {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  display: none;
-  background-color: #ffcccb;
-  border-radius: 10px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* 可愛陰影 */
-}
-
-.dropdown:hover .submenu {
   display: block;
+  background: #333;
+  border-radius: 5px;
+}
+
+.menu .submenu {
+  display: none;
+  position: absolute;
+  top: 100%; /* 子選單顯示在主選單下方 */
+  left: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-direction: row; /* 子選單橫向排列 */
+  background: rgba(0, 0, 0, 0.7); /* 子選單背景 */
+}
+
+.menu .dropdown:hover .submenu {
+  display: flex; /* 使用 flex 排列子選單 */
+}
+
+.menu .submenu li {
+  margin: 0;
+}
+
+.menu .submenu li a {
+  background: #555;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  white-space: nowrap; /* 防止文字換行 */
+}
+
+.menu .submenu li a:hover {
+  background: #777; /* 滑鼠懸停時的背景顏色 */
+}
+
+/* 內容框架樣式 */
+.content {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 70%;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+  background: white;
+}
+
+/* 測驗卷樣式 */
+.quiz {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  padding: 20px;
+  border-radius: 10px;
+  background: #ffc0cb; /* 粉紅色背景 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 添加陰影 */
+  text-align: center;
+}
+
+.quiz h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.quiz p {
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.quiz input[type="text"] {
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.quiz button {
+  padding: 10px 20px;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.quiz button:hover {
+  background: #555;
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
 }
