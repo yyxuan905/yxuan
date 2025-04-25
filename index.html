@@ -7,40 +7,79 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
     <script src="sketch.js" defer></script>
-    <script src="math-quiz.js" defer></script> <!-- 新增的 JavaScript 檔案 -->
   </head>
   <body>
     <!-- 可愛選單 -->
     <ul class="menu">
-      <li><a href="#">首頁</a></li>
+      <li><a href="#" onclick="hideContent()">首頁</a></li>
       <li class="dropdown">
         <a href="#">自我介紹</a>
         <ul class="submenu">
-          <li><a href="https://yyxuan905.github.io/yyyy/" target="_blank">關於我</a></li>
+          <li><a href="#" onclick="loadContent('https://yyxuan905.github.io/yyyy/')">關於我</a></li>
         </ul>
       </li>
       <li class="dropdown">
         <a href="#">作品集</a>
         <ul class="submenu">
-          <li><a href="https://yyxuan905.github.io/yi/" target="_blank">1 週</a></li>
-          <li><a href="https://yyxuan905.github.io/LIU/" target="_blank">2 週</a></li>
-          <li><a href="https://www.et.tku.edu.tw//Front/Download/ET-classroom/Page.aspx?id=c%2BF93j2hZ7c=" target="_blank">3 週</a></li>
-          <li><a href="#">4 週</a></li>
+          <li><a href="#" onclick="loadContent('https://yyxuan905.github.io/yi/')">1 週</a></li>
+          <li><a href="#" onclick="loadContent('https://yyxuan905.github.io/LIU/')">2 週</a></li>
+          <li><a href="#" onclick="loadContent('https://www.et.tku.edu.tw//Front/Download/ET-classroom/Page.aspx?id=c%2BF93j2hZ7c=')">3 週</a></li>
+          <li><a href="#" onclick="loadContent('week4.html')">4 週</a></li>
         </ul>
       </li>
       <li class="dropdown">
         <a href="#">測驗卷</a>
         <ul class="submenu">
-          <li><a href="math-quiz.html" target="_blank">簡單的數學題目</a></li> <!-- 指向數學題目頁面 -->
+          <li><a href="#" onclick="showQuiz()">簡答題</a></li>
         </ul>
       </li>
       <li class="dropdown">
         <a href="#">教學影片</a>
         <ul class="submenu">
-          <li><a href="https://cfchen58.synology.me/%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%882024/A2/week1/20250221_095804.mp4" target="_blank">第一周影片</a></li>
+          <li><a href="#" onclick="loadContent('https://cfchen58.synology.me/%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%882024/A2/week1/20250221_095804.mp4')">第一周影片</a></li>
         </ul>
-      </li>i>
+      </li>
     </ul>
-  </body>y>
 
-</html></html>
+    <!-- 嵌入內容的框架 -->
+    <div class="content" id="content" style="display: none;">
+      <iframe id="content-frame" src="" frameborder="0"></iframe>
+    </div>
+
+    <!-- 測驗卷 -->
+    <div class="quiz" id="quiz" style="display: none;">
+      <h2>簡答題</h2>
+      <p>你喜歡的食物是甚麼?</p>
+      <form>
+        <input type="text" id="answer" placeholder="請輸入你的答案" required>
+        <button type="submit">提交</button>
+      </form>
+    </div>
+
+    <script>
+      // 動態加載內容到 iframe
+      function loadContent(url) {
+        const content = document.getElementById('content');
+        const iframe = document.getElementById('content-frame');
+        iframe.src = url;
+        content.style.display = 'block'; // 顯示內容框架
+        document.getElementById('quiz').style.display = 'none'; // 隱藏測驗卷
+      }
+
+      // 隱藏內容框架
+      function hideContent() {
+        const content = document.getElementById('content');
+        const iframe = document.getElementById('content-frame');
+        iframe.src = ''; // 清空 iframe 的內容
+        content.style.display = 'none'; // 隱藏內容框架
+        document.getElementById('quiz').style.display = 'none'; // 隱藏測驗卷
+      }
+
+      // 顯示測驗卷
+      function showQuiz() {
+        document.getElementById('content').style.display = 'none'; // 隱藏內容框架
+        document.getElementById('quiz').style.display = 'block'; // 顯示測驗卷
+      }
+    </script>
+  </body>
+</html>
